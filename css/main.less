@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+@orange: rgb(249, 135, 32);
+@orange-dark: rgb(255, 90, 18);
+
+
+@text-font-size-tiny: 14pt;
+@text-font-size-small: 18pt;
+@text-font-size-normal: 22pt;
+@text-font-size-big: 20px;
+@display-font-size-normal: 24pt;
+@display-font-size-medium: 30pt;
+@display-font-size-big: 36pt;
+@display-font-size-huge: 48pt;
+
+@text-color-dark: rgb(0, 0, 0);
+
+.border-radius(@radius) {
+  -webkit-border-radius: @radius; /* Saf3-4, iOS 1-3.2, Android <1.6 */
+  -moz-border-radius: @radius; /* FF1-3.6 */
+  border-radius: @radius; /* Opera 10.5, IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ */
+}
+
+.button-gradient(@light, @dark) {
+  background: @light; /* Old browsers */
+  background: linear-gradient(to bottom, @light, @dark);
+  background: -moz-linear-gradient(bottom, @light, @dark);
+  -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{light}, endColorstr=@{dark})";
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@light, endColorstr=@dark, GradientType=0);
+}
+
+html * {
+  font-family: 'Open Sans', sans-serif;
+  font-size: @text-font-size-normal;
+}
+
+.displayFont {
+  font-family: 'Gentium Book Basic', serif;
+}
+
+#footer {
+  font-size: @text-font-size-tiny;
+  width: 100%;
+  text-align: center;
+}
+
+a {
+  &:link, &:visited {
+    color: @text-color-dark;
+    text-decoration: none;
+  }
+}
+
+&:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.action_button {
+  float: right;
+  text-align: center;
+  padding: 14px 18px 14px 18px;
+  border: 0px;
+  .button-gradient(@dailyhugs-green-light, @dailyhugs-green-dark);
+  font-size: 22px;
+  color: #FFFFFF;
+
+  &:hover {
+    .button-gradient(@dailyhugs-green, @dailyhugs-green-dark);
+  }
+}
