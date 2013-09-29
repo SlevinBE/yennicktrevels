@@ -9,36 +9,62 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Gentium+Book+Basic:400,70">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700">
 
-    <script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
     <!-- Google analytics script -->
 
 </head>
 <body>
-<div class="container site-wrapper">
 
-    <div class="site-inner-wrapper">
+    <!-- Site name and menu section -->
+    <div class="container site-wrapper">
+        <div class="site-inner-wrapper">
+            <div class="siteName">
+                Yennick Trevels
+            </div>
 
-        <!-- menu row -->
-        <div class="main-menu">
-            <ul id="navlist">
-                <li>
-
-                </li>
-            </ul>
+            <div class="main-menu">
+                <ul id="navlist">
+                    <li>
+                        <a href="/">Home</a>
+                        <a href="/">Blog</a>
+                        <a href="/">Contact</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-        <div class="main-content">
-            <?php echo $this->fetch('content'); ?>
-        </div>
-
-        <!-- footer -->
-        <div class="main-footer">
-            © Copyright 2013 Yennick Trevels. All rights reserved.
-        </div>
-
     </div>
-</div>
+
+    <!-- header -->
+    <div class="container site-wrapper header">
+        <div class="site-inner-wrapper">
+            <img src="img/myself.png" class="myself-image" />
+
+            <p class="introText">
+                Hi, I’m Yennick <br />
+                I’m a Technical Business Consultant <br />
+                Implementing software solutions <br />
+            </p>
+        </div>
+    </div>
+
+    <!-- experience overview -->
+    <div class="container site-wrapper">
+        <div class="site-inner-wrapper">
+            <div class="main-content">
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="container site-wrapper">
+        <div class="site-inner-wrapper">
+            <div class="footer">
+                © Copyright 2013 Yennick Trevels. All rights reserved.
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
