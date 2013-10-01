@@ -52,13 +52,6 @@ html * {
   font-family: 'Gentium Book Basic', serif;
 }
 
-div.footer {
-  margin-top: 280px;
-  font-size: @text-font-size-tiny;
-  width: 100%;
-  text-align: center;
-}
-
 a {
   &:link, &:visited {
     color: @text-color-dark;
@@ -137,7 +130,8 @@ div.header {
   border-bottom: @orange-dark 23px solid;
 
   div {
-    background: url("../img/map.png");
+    height: 100%;
+    background: url("../img/map.png") no-repeat 110px 0px;
 
     img.myself-image {
       float: left;
@@ -227,6 +221,29 @@ div.main-content {
   .experience-section-uneven {
     .experience-section;
     background-color: #f1e9e6;
+  }
+}
+
+div.footer {
+  margin-top: 280px;
+  width: 100%;
+  text-align: center;
+
+  ul.socialLinks {
+    margin-left: 0;
+    padding-left: 0;
+    white-space: nowrap;
+
+    li {
+      display: inline;
+      list-style-type: none;
+      margin-right: 8px;
+    }
+  }
+
+  p.copyright {
+    margin-top: 50px;
+    font-size: @text-font-size-tiny;
   }
 }
 
