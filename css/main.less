@@ -222,6 +222,54 @@ div.main-content {
     .experience-section;
     background-color: #f1e9e6;
   }
+
+  div.newsletter-signup-section {
+    float: left;
+    padding: 20px 0px;
+    width: 100%;
+    background-color: #4f4f4f;
+    border-top: 3px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-right: 0px;
+    border-color: #ff5a12;
+    border-style: solid;
+    color: #FFFFFF;
+
+    form {
+      margin: 0px;
+      text-align: center;
+    }
+
+    label {
+      display: inline;
+      font-size: @text-font-size-big;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+
+    input.email {
+      vertical-align: middle;
+      margin: 0px 5px;
+      height: 26px;
+      border: 1px #ff5a12 solid;
+    }
+
+    div.clear {
+      display: inline;
+      vertical-align: middle;
+
+      input {
+        color: #FFFFFF;
+        font-size: @text-font-size-big;
+        font-weight: bold;
+        .button-gradient(#49aa02, #3b8c00);
+        .border-radius(5px);
+        border: 3px #FFFFFF solid;
+        padding: 6px 38px;
+      }
+    }
+  }
 }
 
 div.footer {
