@@ -1,0 +1,297 @@
+@charset "utf-8";
+
+@orange: rgb(249, 135, 32);
+@orange-dark: rgb(255, 90, 18);
+
+
+@text-font-size-tiny: 11px;
+@text-font-size-small: 15px;
+@text-font-size-normal: 18px;
+@text-font-size-big: 21px;
+@display-font-size-small: 15px;
+@display-font-size-normal: 20px;
+@display-font-size-medium: 25px;
+@display-font-size-big: 30px;
+@display-font-size-huge: 40px;
+
+@text-color-dark: rgb(0, 0, 0);
+
+/**
+ * Reusable styles
+ */
+.border-radius(@radius) {
+  -webkit-border-radius: @radius; /* Saf3-4, iOS 1-3.2, Android <1.6 */
+  -moz-border-radius: @radius; /* FF1-3.6 */
+  border-radius: @radius; /* Opera 10.5, IE9, Saf5, Chrome, FF4, iOS 4, Android 2.1+ */
+}
+
+.button-gradient(@light, @dark) {
+  background: @light; /* Old browsers */
+  background: linear-gradient(to bottom, @light, @dark);
+  background: -moz-linear-gradient(bottom, @light, @dark);
+  -ms-filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{light}, endColorstr=@{dark})";
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=@light, endColorstr=@dark, GradientType=0);
+}
+
+.box-shadow() {
+  -moz-box-shadow:    3px 3px 6px rgba(0,0,0, 0.75);
+  -webkit-box-shadow: 3px 3px 6px rgba(0,0,0, 0.75);
+  box-shadow:         3px 3px 6px rgba(0,0,0, 0.75);
+}
+
+/**
+ * Generic site styles
+ */
+
+html * {
+  font-family: 'Open Sans', sans-serif;
+  font-size: @text-font-size-normal;
+}
+
+.displayFont {
+  font-family: 'Gentium Book Basic', serif;
+}
+
+a {
+  &:link, &:visited {
+    color: @text-color-dark;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: @orange-dark;
+    text-decoration: none;
+  }
+}
+
+/**
+ * Site structure styles
+ */
+
+.site-wrapper {
+  background-color: #FFFFFF;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.site-inner-wrapper {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/**
+ * Page specific styles
+ */
+
+div.siteName {
+  float: left;
+  .displayFont;
+  font-size: @display-font-size-huge;
+  font-weight: bold;
+}
+
+//main menu
+div.main-menu {
+  float: right;
+  margin: 0px 0px 0px 0px;
+
+  ul#navlist {
+    margin-left: 0;
+    padding-left: 0;
+    white-space: nowrap;
+
+    li {
+      display: inline;
+      list-style-type: none;
+      margin-right: 4px;
+    }
+
+    a {
+      .displayFont;
+      padding: 9px 19px;
+      font-size: @display-font-size-medium;
+      font-weight: bold;
+      color: #000000;
+
+      &:hover {
+        color: @orange-dark;
+      }
+    }
+  }
+}
+
+div.header {
+  background-image: url("../images/header-bg-pattern.jpg");
+  width: 100%;
+  height: 330px;
+  border-bottom: @orange-dark 23px solid;
+
+  div {
+    height: 100%;
+    background: url("../images/map.png") no-repeat 110px 0px;
+
+    img.myself-image {
+      float: left;
+      margin-top: 11px;
+    }
+
+    p.introText {
+      float: right;
+      margin-top: 77px;
+      margin-left: 130px;
+      .displayFont;
+      font-size: @display-font-size-big;
+      font-weight: bold;
+      line-height: 30px;
+      color: #FFFFFF;
+    }
+  }
+}
+
+div.main-content {
+  .experience-section {
+    float:left;
+    padding: 30px 0px;
+    width: 100%;
+    min-height: 180px;
+
+    div.experience-header {
+      float: left;
+      width: 425px;
+      font-weight: bold;
+
+      span.experience-title {
+        .displayFont;
+        display: block;
+        margin-bottom: 10px;
+        font-size: @display-font-size-big;
+      }
+
+      span.experience-subtitle {
+        .displayFont;
+        font-size: @display-font-size-normal;
+      }
+    }
+
+    div.experience-content {
+      float: left;
+      width: 575px;
+
+      p.overview-text {
+        font-size: @text-font-size-normal;
+      }
+
+      div.technology-buttons {
+        margin: 0px 0px 0px 0px;
+
+        ul {
+          margin-left: 0;
+          padding-left: 0;
+          white-space: nowrap;
+
+          li {
+            display: inline;
+            list-style-type: none;
+            margin-right: 8px;
+          }
+
+          button {
+            .displayFont;
+            text-align: center;
+            padding: 0px 20px 0px 20px;
+            border: 2px @orange-dark solid;
+            background-color: #4f4f4f;
+            color: #FFFFFF;
+            font-size: @display-font-size-small;
+            .box-shadow;
+            .border-radius(5px);
+
+            &:hover {
+              background-color: darken(#4f4f4f, 6%);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .experience-section-uneven {
+    .experience-section;
+    background-color: #f1e9e6;
+  }
+
+  div.newsletter-signup-section {
+    float: left;
+    padding: 20px 0px;
+    width: 100%;
+    background-color: #4f4f4f;
+    border-top: 3px;
+    border-bottom: 3px;
+    border-left: 0px;
+    border-right: 0px;
+    border-color: #ff5a12;
+    border-style: solid;
+    color: #FFFFFF;
+
+    form {
+      margin: 0px;
+      text-align: center;
+    }
+
+    label {
+      display: inline;
+      font-size: @text-font-size-big;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+
+    input.email {
+      vertical-align: middle;
+      margin: 0px 5px;
+      height: 26px;
+      border: 1px #ff5a12 solid;
+    }
+
+    div.clear {
+      display: inline;
+      vertical-align: middle;
+
+      input {
+        color: #FFFFFF;
+        font-size: @text-font-size-big;
+        font-weight: bold;
+        .button-gradient(#49aa02, #3b8c00);
+        .border-radius(5px);
+        border: 3px #FFFFFF solid;
+        padding: 6px 38px;
+      }
+    }
+  }
+}
+
+div.footer {
+  margin-top: 240px;
+  width: 100%;
+  text-align: center;
+
+  ul.socialLinks {
+    margin-left: 0;
+    padding-left: 0;
+    white-space: nowrap;
+
+    li {
+      display: inline;
+      list-style-type: none;
+      margin-right: 8px;
+    }
+  }
+
+  p.copyright {
+    margin-top: 50px;
+    font-size: @text-font-size-tiny;
+  }
+}
+
