@@ -232,6 +232,13 @@ div.main-content {
             }
           }
         }
+
+        .popover {
+          max-width: 450px;
+          .popover-content {
+            font-size: $text-font-size-small;
+          }
+        }
       }
     }
   }
