@@ -139,7 +139,7 @@ div.topNavSection {
   }
 }
 
-div.header {
+@mixin header {
   background-image: url("../images/header-bg-pattern.jpg");
   width: 100%;
   height: 330px;
@@ -163,6 +163,25 @@ div.header {
       font-weight: bold;
       line-height: 30px;
       color: #FFFFFF;
+    }
+  }
+}
+
+div.header {
+  @include header;
+}
+
+div.contactHeader {
+  @include header;
+  height: 200px;
+
+  div {
+    background-position: 0px -100px;
+
+    p.introText {
+      position: relative;
+      right: 300px;
+      font-size: $display-font-size-huge;
     }
   }
 }
