@@ -174,6 +174,7 @@ div.header {
 div.smallHeader {
   @include header;
   height: 200px;
+  margin-bottom: 10px;
 
   div {
     position: relative;
@@ -274,54 +275,6 @@ div.main-content {
     @extend .experience-section;
     background-color: #f1e9e6;
   }
-
-  div.newsletter-signup-section {
-    float: left;
-    padding: 20px 0px;
-    width: 100%;
-    background-color: #4f4f4f;
-    border-top: 3px;
-    border-bottom: 3px;
-    border-left: 0px;
-    border-right: 0px;
-    border-color: #ff5a12;
-    border-style: solid;
-    color: #FFFFFF;
-
-    form {
-      margin: 0px;
-      text-align: center;
-    }
-
-    label {
-      display: inline;
-      font-size: $text-font-size-big;
-      font-weight: bold;
-      vertical-align: middle;
-    }
-
-    input.email {
-      vertical-align: middle;
-      margin: 0px 5px;
-      height: 26px;
-      border: 1px #ff5a12 solid;
-    }
-
-    div.clear {
-      display: inline;
-      vertical-align: middle;
-
-      input {
-        color: #FFFFFF;
-        font-size: $text-font-size-big;
-        font-weight: bold;
-        @include button-gradient(#49aa02, #3b8c00);
-        @include border-radius(5px);
-        border: 3px #FFFFFF solid;
-        padding: 6px 38px;
-      }
-    }
-  }
 }
 
 div.footer-wrapper {
@@ -356,6 +309,59 @@ div.footer-wrapper {
 }
 
 /*
+ * Newsletter Signup
+ */
+
+div.newsletter-signup-section {
+  float: left;
+  padding: 20px 0px;
+  width: 100%;
+  background-color: #4f4f4f;
+  border-top: 3px;
+  border-bottom: 3px;
+  border-left: 0px;
+  border-right: 0px;
+  border-color: #ff5a12;
+  border-style: solid;
+  color: #FFFFFF;
+
+  form {
+    margin: 0px;
+    text-align: center;
+    background-color: #4f4f4f;
+  }
+
+  label {
+    display: inline;
+    font-size: $text-font-size-big;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+
+  input.email {
+    vertical-align: middle;
+    margin: 0px 5px;
+    height: 26px;
+    border: 1px #ff5a12 solid;
+  }
+
+  div.clear {
+    display: inline;
+    vertical-align: middle;
+
+    input {
+      color: #FFFFFF;
+      font-size: $text-font-size-big;
+      font-weight: bold;
+      @include button-gradient(#49aa02, #3b8c00);
+      @include border-radius(5px);
+      border: 3px #FFFFFF solid;
+      padding: 6px 38px;
+    }
+  }
+}
+
+/*
  * Article styles
  */
 
@@ -378,6 +384,7 @@ body {
 
 article {
 	padding-top: 2em;
+    background-color: #FFFFFF;
 
 	.entry-content {
 		h3 {
@@ -396,54 +403,52 @@ article {
 	header {
 		h1.entry-title {
 			font-family: $heading-font-family;
-			font-weight: 400;
+            font-weight: bold;
+            font-size: $text-font-size-big;
 		}
 	}
 }
 
-#content {
-	div.pagination {
-		background: none repeat scroll 0 0 transparent;
-		margin: 0 10px;  
-		font-size: 0.95em;
-		padding-bottom: 1.5em;
-		margin-top: 4em;
-		position: relative;
-		text-align: center;		
-		border-top: dotted 1px #D1D1D1;
-		border-bottom: dotted 1px #D1D1D1;
-	}
+div.blog-index-wrapper {
+    background: #FFFFFF;
 
-	.blog-index {
-		article {
-			padding-top: 4em;
+    div.pagination {
+        background: none repeat scroll 0 0 transparent;
+        margin: 0 10px;
+        font-size: 0.95em;
+        padding-bottom: 1.5em;
+        margin-top: 4em;
+        position: relative;
+        text-align: center;
+        border-top: dotted 1px #D1D1D1;
+        border-bottom: dotted 1px #D1D1D1;
+    }
 
-			header {
-				padding-left: 0;
-  				padding-right: 0;
-			}
-		}
+    .blog-index {
+        article {
+            padding-top: 4em;
 
-		h1 {
-			a {
-				font-family: $heading-font-family;
-				font-weight: 400;
-			}
+            header {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
 
-			a:hover {
-				text-decoration: none;
-			}
-		}
-	}
+        h1 {
+            a {
+                font-family: $heading-font-family;
+                font-weight: 400;
+            }
 
-	.hentry {
-		h1.entry-title {
-			font-family: $heading-font-family;
-			font-weight: 400;
-			font-size: 2.2em;
-		}
-	}
-	
+            a:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    div#blog-archives {
+      margin-top: 20px;
+    }
 }
 
 figure.code {

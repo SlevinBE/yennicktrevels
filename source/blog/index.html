@@ -11,8 +11,21 @@ layout: home
     </div>
 </div>
 
-<div class="container site-wrapper">
+<div class="newsletter-signup-section">
     <div class="site-inner-wrapper">
+        <!-- Mailchimp newsletter signup form -->
+        <div id="mc_embed_signup">
+            <form action="http://twitter.us7.list-manage.com/subscribe/post?u=02f28b618c351eec5f12806b3&amp;id=a42d48b8cd" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                <label for="mce-EMAIL">Follow my content</label>
+                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container site-wrapper">
+    <div class="site-inner-wrapper blog-index-wrapper">
         <div class="blog-index">
           {% assign index = true %}
           {% for post in paginator.posts %}
