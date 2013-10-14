@@ -171,17 +171,25 @@ div.header {
   @include header;
 }
 
-div.contactHeader {
+div.smallHeader {
   @include header;
   height: 200px;
 
   div {
+    position: relative;
     background-position: 0px -100px;
+    height: 100%;
 
-    p.introText {
-      position: relative;
-      right: 300px;
-      font-size: $display-font-size-huge;
+    p.headerText {
+      position: absolute;
+      bottom: 10px;
+      right: 0px;
+      margin-bottom: 0px;
+      @include displayFont;
+      font-size: $display-font-size-huge + 4;
+      font-weight: bold;
+      line-height: 30px;
+      color: #FFFFFF;
     }
   }
 }
