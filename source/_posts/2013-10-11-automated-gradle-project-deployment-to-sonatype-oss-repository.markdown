@@ -23,100 +23,95 @@ These are the steps:
 
 Apply the maven and signing plugins. The signing plugin will sign your jar and pom files, which is required for deployment to the Sonatype OSS repository.
 
-{% codeblock lang:Gradle Gradle %}
-apply plugin: 'maven'
-apply plugin: 'signing'
-{% endcodeblock %}
+	apply plugin: 'maven'
+	apply plugin: 'signing'
+{:lang="groovy"}
 
 Specify the group and version of your project:
 
-{% codeblock Gradle %}
-group = 'org.gradlefx'
-version = '0.3.1'
-{% endcodeblock %}
+	group = 'org.gradlefx'
+	version = '0.3.1'
+{:lang="groovy"}
 
 Define tasks for source and javadoc jar generation. These jars are also required for Sonatype:
 
-{% codeblock Gradle %}
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from 'build/docs/javadoc'
-}
+	task javadocJar(type: Jar, dependsOn: javadoc) {
+		classifier = 'javadoc'
+		from 'build/docs/javadoc'
+	}
 
-task sourcesJar(type: Jar) {
-    from sourceSets.main.allSource
-    classifier = 'sources'
-}
-{% endcodeblock %}
+	task sourcesJar(type: Jar) {
+		from sourceSets.main.allSource
+		classifier = 'sources'
+	}
+{:lang="groovy"}
 
 Specify your artifacts:
 
-{% codeblock Gradle %}
-artifacts {
-    archives jar
+	artifacts {
+		archives jar
 
-    archives javadocJar
-    archives sourcesJar
-}
-{% endcodeblock %}
+		archives javadocJar
+		archives sourcesJar
+	}
+{:lang="groovy"}
+
 Configure the signing task by specifying which artifacts to sign, in this case all the artifacts in the archives configuration. This will not yet include the pom file, which will be signed later.
 
-{% codeblock Gradle %}
-signing {
-    sign configurations.archives
-}
-{% endcodeblock %}
+	signing {
+		sign configurations.archives
+	}
+{:lang="groovy"}
 
 Then we need to configure the generated pom file, sign the pom file and configure the Sonatype OSS staging repository.  
 The **'beforeDeployment'** line will sign the pom file right before the artifacts are deployed to the Sonatype OSS repository.  
 The **'repository'** part configures the Sonatype OSS staging repository. Notice the sonatypeUsername and sonatypePassword variables, these are property variables to which I'll come back to later in this post.  
 The **'pom.project'** section configures the generated pom files, you need to specify all this information because it's required for the Sonatype repository (and Maven Central).
 
-{% codeblock Gradle %}
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+	uploadArchives {
+		repositories {
+			mavenDeployer {
+				beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-              authentication(userName: sonatypeUsername, password: sonatypePassword)
-            }
+				repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+				  authentication(userName: sonatypeUsername, password: sonatypePassword)
+				}
 
-            pom.project {
-               name 'GradleFx'
-               packaging 'jar'
-               description 'GradleFx is a Gradle plugin for building Flex and Actionscript applications'
-               url 'http://gradlefx.github.com/'
+				pom.project {
+				   name 'GradleFx'
+				   packaging 'jar'
+				   description 'GradleFx is a Gradle plugin for building Flex and Actionscript applications'
+				   url 'http://gradlefx.github.com/'
 
-               scm {
-                   url 'scm:git@github.com:GradleFx/GradleFx.git'
-                   connection 'scm:git@github.com:GradleFx/GradleFx.git'
-                   developerConnection 'scm:git@github.com:GradleFx/GradleFx.git'
-               }
+				   scm {
+					   url 'scm:git@github.com:GradleFx/GradleFx.git'
+					   connection 'scm:git@github.com:GradleFx/GradleFx.git'
+					   developerConnection 'scm:git@github.com:GradleFx/GradleFx.git'
+				   }
 
-               licenses {
-                   license {
-                       name 'The Apache Software License, Version 2.0'
-                       url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                       distribution 'repo'
-                   }
-               }
+				   licenses {
+					   license {
+						   name 'The Apache Software License, Version 2.0'
+						   url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+						   distribution 'repo'
+					   }
+				   }
 
-               developers {
-                   developer {
-                       id 'yennicktrevels'
-                       name 'Yennick Trevels'
-                   }
-                   developer {
-                       id 'stevendick'
-                       name 'Steven Dick'
-                   }
-               }
-           }
-        }
-    }
-}
-{% endcodeblock %}
+				   developers {
+					   developer {
+						   id 'yennicktrevels'
+						   name 'Yennick Trevels'
+					   }
+					   developer {
+						   id 'stevendick'
+						   name 'Steven Dick'
+					   }
+				   }
+			   }
+			}
+		}
+	}
+{:lang="groovy"}  
 
 That's it for the configuration of your build script.
 
@@ -144,22 +139,21 @@ This properties file is used by your gradle build script. The signing.* properti
 So first create the "gradle.properties" file under D:\Users\MyUsername\.gradle  
 Then add the following properties to the file and change their values:
 
-{% codeblock Gradle %}
-signing.keyId=A5DOA652
-signing.password=YourPublicKeyPassword
-signing.secretKeyRingFile=D:/Users/MyUsername/AppData/Roaming/gnupg/secring.gpg
 
-sonatypeUsername=YourSonatypeJiraUsername
-sonatypePassword=YourSonatypeJiraPassword
-{% endcodeblock %}
+	signing.keyId=A5DOA652
+	signing.password=YourPublicKeyPassword
+	signing.secretKeyRingFile=D:/Users/MyUsername/AppData/Roaming/gnupg/secring.gpg
+
+	sonatypeUsername=YourSonatypeJiraUsername
+	sonatypePassword=YourSonatypeJiraPassword
+{:lang="plain"}
 
 the signing.keyId property is the public key id, you can list your keys with the "gpg --list-keys" command. With this command you'll get an output like this:
 
-{% codeblock Gradle %}
-pub 2048R/A5DOA652 2011-10-16
-uid MyUid
-sub 2048R/F66623G0 2011-10-16
-{% endcodeblock %}
+	pub 2048R/A5DOA652 2011-10-16
+	uid MyUid
+	sub 2048R/F66623G0 2011-10-16
+{:lang="plain"}
 
 That's it for the initial setup.
 
