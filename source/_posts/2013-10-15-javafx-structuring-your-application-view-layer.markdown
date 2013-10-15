@@ -18,8 +18,6 @@ Here's an overview:
 3. Application logic layer
 4. Service - Application State layer
 
-In this post I'll explain the components of the view layer (View and Mediator), how they should interact and some best practices on how to use them. 
-
 ### The View
 This class is where you'll use the JavaFx components to build your UI. It's also responsible for displaying notifications, opening new windows or just about anything that it related to the UI (and which should happen on the UI thread).  
 I prefer to create my UI with pure Java code instead of using FXML. It's fast, easier to use with Guice and it's giving me more control over my code. Therefore my structure is based on this.  
