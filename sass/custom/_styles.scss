@@ -120,12 +120,12 @@ html * {
 
 a {
   &:link, &:visited {
-    color: $text-color-dark;
+    color: $orange-dark;
     text-decoration: none;
   }
 
   &:hover {
-    color: $orange-dark;
+    color: $orange;
     text-decoration: none;
   }
 }
